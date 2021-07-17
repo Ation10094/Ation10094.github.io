@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <script src="/live2d-widget/autoload.js"></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"ation-xu.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Ation&#39;s Blog">
+<meta property="og:url" content="http://ation-xu.github.io/index.html">
+<meta property="og:site_name" content="Ation&#39;s Blog">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="徐梓添">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://ation-xu.github.io/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Ation's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta custom-logo">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Ation's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">我们都是阴沟里的虫子，但总得有人仰望星空。</p>
+      <a>
+        <img class="custom-logo-image" src="https://ation-xu.github.io/Ation.jpg" alt="Ation's Blog">
+      </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://ation-xu.github.io/2021/07/16/Hello-Hexo/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="徐梓添">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ation's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/07/16/Hello-Hexo/" class="post-title-link" itemprop="url">Hello,Hexo!</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-07-16 19:45:38 / 修改时间：22:17:13" itemprop="dateCreated datePublished" datetime="2021-07-16T19:45:38+08:00">2021-07-16</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>虽然我之前已经使用 Gridea &amp; Github Page 搭建了一个Blog，用的主题是 仿NexT，但是我发现 Gridea 同步太慢了，还经常出错<del>(其实主要是为了看板娘)</del>，所以我在 2021年7月16日，决定开始使用 Hexo 的 NexT。另外，它真的是一个好主题！</p>
+<h1 id="Hello-Hexo"><a href="#Hello-Hexo" class="headerlink" title="Hello,Hexo!"></a>Hello,Hexo!</h1>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://ation-xu.github.io/2021/07/16/BIOS-MBR%E5%90%AF%E5%8A%A8%E4%B8%8EUEFI-GPT%E5%90%AF%E5%8A%A8%E7%9A%84%E6%97%A0%E6%8D%9F%E5%88%87%E6%8D%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="徐梓添">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ation's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/07/16/BIOS-MBR%E5%90%AF%E5%8A%A8%E4%B8%8EUEFI-GPT%E5%90%AF%E5%8A%A8%E7%9A%84%E6%97%A0%E6%8D%9F%E5%88%87%E6%8D%A2/" class="post-title-link" itemprop="url">BIOS-MBR启动与UEFI-GPT启动的无损切换</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-07-16 13:00:42" itemprop="dateCreated datePublished" datetime="2021-07-16T13:00:42+08:00">2021-07-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-17 01:29:26" itemprop="dateModified" datetime="2021-07-17T01:29:26+08:00">2021-07-17</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><del>继上次的 <a href="https://ation-xu.github.io/post/an-zhuang-di-er-ge-wu-li-ji-yi-ubuntu-1910-wei-li/">安装第二个物理机(以Ubuntu 19.10为例)</a>，终于又出干货了.</del><br>Microsoft 最近发布了 Windows 11，个人感觉比 Windows 10 好看了一些.然而，更新 Windows 11 的条件相当苛刻.其中似乎就包含了 UEFI启动.笔者当时买电脑时被要求删除原装的 Windows 10 并安装 Windows 7，由于当时并不是我自己操作的，电脑的启动方式被莫名改成了 传统BIOS和MBR 的方式，现在想改回来.说在前面，事实上 UEFI-GPT启动 和 BIOS-MBR启动 使用起来并没有太大的区别，只是 听说 UEFI-GPT 更安全(?)且使用 UEFI-GPT启动 时电脑的开机速度会快一些.其实原来没必要更改，因为数据处理太麻烦.但是现在有了无需格式化硬盘的办法，想折腾的读者可以试试.<br><del>其实是因为我想超越人类！おれは人间をやめるぞ！ジョジョ―――ッ！！</del></p>
+<h2 id="材料-amp-配置"><a href="#材料-amp-配置" class="headerlink" title="材料&amp;配置"></a>材料&amp;配置</h2><ul>
+<li>Lenovo ideapad 310S<h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><h3 id="使用-Windows-自带的-mbr2gpt-exe"><a href="#使用-Windows-自带的-mbr2gpt-exe" class="headerlink" title="使用 Windows 自带的 mbr2gpt.exe."></a>使用 Windows 自带的 mbr2gpt.exe.</h3></li>
+</ul>
+<ol>
+<li>以 管理员身份 打开 cmd.exe.</li>
+<li>输入 <code>mbr2gpt /validate /allowfullos</code> 并回车，这一步是测试，如果结果是 successfully,再进入下一步.</li>
+<li>输入 <code>mbr2gpt /convert /allowfullos</code> 并回车，等待输出 successfully.现在已经设置成GPT分区模式了.<h3 id="进入-BIOS-并将启动改成-UEFI启动"><a href="#进入-BIOS-并将启动改成-UEFI启动" class="headerlink" title="进入 BIOS 并将启动改成 UEFI启动."></a>进入 BIOS 并将启动改成 UEFI启动.</h3></li>
+<li>找到 Boot 选项，将 Boot Mode 一栏中的 Legacy Support 改成 UEFI.</li>
+<li>找到 Exit 选项，将 OS Optimized Defaults 一栏中 选择 Enable.</li>
+<li>选择 Exit Saving Changes，退出并重启.<h3 id="完成"><a href="#完成" class="headerlink" title="完成."></a>完成.</h3>如果现在发现启动界面不再显示 Windows图标 而是显示 电脑品牌图标 (比如我的是 Lenovo) 说明已经成功了.说实话，原来的 Windows LOGO 早就看腻了, 现在这个 Lenovo 看起来相当舒服(内心PS: 最高に「ハイ！」ってやつだ ).<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2></li>
+</ol>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/VXLeaf/article/details/108875812">VXLeaf - 《记录依次BIOS+MBR无损转换UEFI+GPT》</a> (如果在 使用 Windows 自带的 mbr2gpt.exe 将硬盘改成 GPT分区模式 一步中显示 fail，可以参考本文.)</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://ation-xu.github.io/2021/04/17/Golden-Wind%EF%BC%81%EF%BC%88%E5%85%B3%E4%BA%8E%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90api%E7%9A%84%E5%B0%9D%E8%AF%95%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="徐梓添">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ation's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/04/17/Golden-Wind%EF%BC%81%EF%BC%88%E5%85%B3%E4%BA%8E%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90api%E7%9A%84%E5%B0%9D%E8%AF%95%EF%BC%89/" class="post-title-link" itemprop="url">Golden Wind！（关于网易云音乐api的尝试）</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-04-17 09:06:59" itemprop="dateCreated datePublished" datetime="2021-04-17T09:06:59+08:00">2021-04-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-17 01:30:00" itemprop="dateModified" datetime="2021-07-17T01:30:00+08:00">2021-07-17</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>我乔鲁诺·乔巴纳，有一架钢琴！</p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=524 height=86 src="//music.163.com/outchain/player?type=2&id=1334780738&auto=1&height=66"></iframe>
+<img src="../../post-images/1618623456586.jpg"/>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://ation-xu.github.io/2020/04/04/%E5%BF%AB%E9%80%9F%E5%B0%86%E7%BD%91%E7%AB%99%E5%85%A8%E7%AB%99%E5%86%85%E5%AE%B9%E8%B0%83%E6%95%B4%E4%B8%BA%E9%BB%91%E7%99%BD%E7%9A%84%E6%96%B9%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="徐梓添">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ation's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/04/%E5%BF%AB%E9%80%9F%E5%B0%86%E7%BD%91%E7%AB%99%E5%85%A8%E7%AB%99%E5%86%85%E5%AE%B9%E8%B0%83%E6%95%B4%E4%B8%BA%E9%BB%91%E7%99%BD%E7%9A%84%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">快速将网站全站内容调整为黑白的方法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-04-04 10:56:59" itemprop="dateCreated datePublished" datetime="2020-04-04T10:56:59+08:00">2020-04-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-17 01:31:20" itemprop="dateModified" datetime="2021-07-17T01:31:20+08:00">2021-07-17</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>当对遇难同胞或牺牲烈士表示悼念时(如 新冠肺炎疫情斗争)，许多网站都会调整成黑白的色调。此处记录最简单的方法。</p>
+<h2 id="材料与配置"><a href="#材料与配置" class="headerlink" title="材料与配置"></a>材料与配置</h2><ul>
+<li>你的网站<h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><h3 id="一-找到-main-css-css-即-主CSS-文件"><a href="#一-找到-main-css-css-即-主CSS-文件" class="headerlink" title="一.找到 main-css.css(即 主CSS)文件."></a>一.找到 main-css.css(即 主CSS)文件.</h3><h3 id="二-复制下列代码粘贴在其中-不清楚粘贴位置的，粘贴在最上方就可以"><a href="#二-复制下列代码粘贴在其中-不清楚粘贴位置的，粘贴在最上方就可以" class="headerlink" title="二.复制下列代码粘贴在其中(不清楚粘贴位置的，粘贴在最上方就可以) ."></a>二.复制下列代码粘贴在其中(不清楚粘贴位置的，粘贴在最上方就可以) .</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">html</span> &#123;</span><br><span class="line"></span><br><span class="line">        webkit-<span class="attribute">filter</span>: <span class="built_in">grayscale</span>(<span class="number">100%</span>); </span><br><span class="line"></span><br><span class="line">        -moz-<span class="attribute">filter</span>: <span class="built_in">grayscale</span>(<span class="number">100%</span>);</span><br><span class="line"></span><br><span class="line">        -ms-<span class="attribute">filter</span>: <span class="built_in">grayscale</span>(<span class="number">100%</span>);</span><br><span class="line"></span><br><span class="line">        -o-<span class="attribute">filter</span>: <span class="built_in">grayscale</span>(<span class="number">100%</span>);</span><br><span class="line"></span><br><span class="line">        <span class="attribute">filter</span>:progid:DXImageTransform.Microsoft.<span class="built_in">BasicImage</span>(grayscale=<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">        _filter:none;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="三-保存后刷新网页，发现网站已经变成黑白了"><a href="#三-保存后刷新网页，发现网站已经变成黑白了" class="headerlink" title="三.保存后刷新网页，发现网站已经变成黑白了."></a>三.保存后刷新网页，发现网站已经变成黑白了.</h3><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2>转自 <a target="_blank" rel="noopener" href="http://wpa.qq.com/msgrd?v=3&uin=2948584067&site=qq&menu=yes">@Acfboy</a> QQ聊天叙述</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://ation-xu.github.io/2020/04/02/%E9%9C%87%E6%83%8A-%E6%B5%99%E6%B1%9F%E4%B8%AD%E5%B0%8F%E5%AD%A6%E5%BC%80%E5%AD%A6%E6%97%B6%E9%97%B4%E5%85%AC%E5%B8%83%EF%BC%81-%E5%B7%B2%E8%BF%87%E6%97%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="徐梓添">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ation's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/02/%E9%9C%87%E6%83%8A-%E6%B5%99%E6%B1%9F%E4%B8%AD%E5%B0%8F%E5%AD%A6%E5%BC%80%E5%AD%A6%E6%97%B6%E9%97%B4%E5%85%AC%E5%B8%83%EF%BC%81-%E5%B7%B2%E8%BF%87%E6%97%B6/" class="post-title-link" itemprop="url">震惊!浙江中小学开学时间公布！(已过时)</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-04-02 09:29:24" itemprop="dateCreated datePublished" datetime="2020-04-02T09:29:24+08:00">2020-04-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-17 01:31:47" itemprop="dateModified" datetime="2021-07-17T01:31:47+08:00">2021-07-17</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>什么也没有</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>不可能的😏😏😏</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzU3NDM5OTg3NA==&mid=2247492721&idx=1&sn=eb5537ff29731fd1a254745d6268b216&chksm=fd30509cca47d98a539ac6b530f09564118ae1dc61e1ab37e10067c3a137ee9ba95f9924f9e9&mpshare=1&scene=23&srcid=&sharer_sharetime=1585730189587&sharer_shareid=6cc05dbc473ea97ffcfef1d4888e6ca2#rd">https://mp.weixin.qq.com/s?__biz=MzU3NDM5OTg3NA==&amp;mid=2247492721&amp;idx=1&amp;sn=eb5537ff29731fd1a254745d6268b216&amp;chksm=fd30509cca47d98a539ac6b530f09564118ae1dc61e1ab37e10067c3a137ee9ba95f9924f9e9&amp;mpshare=1&amp;scene=23&amp;srcid=&amp;sharer_sharetime=1585730189587&amp;sharer_shareid=6cc05dbc473ea97ffcfef1d4888e6ca2#rd</a>(但是已经被删除了)</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://ation-xu.github.io/2020/04/02/%E5%AE%89%E8%A3%85%E7%AC%AC%E4%BA%8C%E4%B8%AA%E7%89%A9%E7%90%86%E6%9C%BA-%E4%BB%A5Ubuntu-19-10%E4%B8%BA%E4%BE%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="徐梓添">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ation's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/02/%E5%AE%89%E8%A3%85%E7%AC%AC%E4%BA%8C%E4%B8%AA%E7%89%A9%E7%90%86%E6%9C%BA-%E4%BB%A5Ubuntu-19-10%E4%B8%BA%E4%BE%8B/" class="post-title-link" itemprop="url">安装第二个物理机(以Ubuntu 19.10为例)</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-04-02 08:57:06" itemprop="dateCreated datePublished" datetime="2020-04-02T08:57:06+08:00">2020-04-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-17 01:23:37" itemprop="dateModified" datetime="2021-07-17T01:23:37+08:00">2021-07-17</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>之前看到有个同学直接安装了 Ubuntu 的物理机，我立刻被 Ubuntu 的高度可定制性吸引，于是也想装一个 Ubuntu 物理机玩玩.可是我还是舍不得 Windows（注：笔者使用的是 Windows 10）上的数据.尝试过安装 VMware虚拟机，问题是电脑配置不高，虚拟机运行总会占用大量内存，非常卡.于是我就想着安装双系统.捣鼓了半天，Ubuntu 完美运行.以下是操作步骤.</p>
+<h2 id="材料-amp-配置"><a href="#材料-amp-配置" class="headerlink" title="材料&amp;配置"></a>材料&amp;配置</h2><ul>
+<li>Lenovo ideapad 310S</li>
+<li>一个容量大于等于4GB的空U盘</li>
+<li>Ubuntu 19.10 的映像文件(官网下载 网址:<a target="_blank" rel="noopener" href="https://ubuntu.com/download">https://ubuntu.com/download</a>).</li>
+<li>UltraISO软碟通(官网下载 网址:<a target="_blank" rel="noopener" href="https://cn.ultraiso.net/">https://cn.ultraiso.net/</a>).</li>
+</ul>
+
+<h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><h3 id="一-在硬盘中划分出一段空间供Ubuntu使用"><a href="#一-在硬盘中划分出一段空间供Ubuntu使用" class="headerlink" title="一.在硬盘中划分出一段空间供Ubuntu使用."></a>一.在硬盘中划分出一段空间供Ubuntu使用.</h3><ol>
+<li>右键单击 此电脑，左键单击 管理，在 弹出窗口左边栏 找到 存储 → 磁盘管理。此时，中间栏会出现你的电脑的磁盘分区.</li>
+<li>左键单击选中要压缩的分区，右键单击，左键单击 压缩卷。这里我在 D盘 空出50GB(注：50GB=51200MB)的容量来供 Ubuntu 使用.</li>
+<li>压缩完以后会发现多出了一段空白的空间.不要做任何操作(由于截图上的电脑已经安装了 Ubuntu，所以截图上显示多出来的50GB空间为 主分区.若按照正常操作，应该显示 空闲).</li>
+</ol>
+<img src="../../post-images/1585790001858.png"/>
+
+<h3 id="二-制作-Ubuntu-19-10-启动盘"><a href="#二-制作-Ubuntu-19-10-启动盘" class="headerlink" title="二.制作 Ubuntu 19.10 启动盘."></a>二.制作 Ubuntu 19.10 启动盘.</h3><ol>
+<li>按照上文的网址下载 Ubuntu 19.10 映像文件(.iso) 和 UltraISO软碟通.</li>
+<li>启动 UltraISO软碟通安装程序，按照步骤安装软件.</li>
+<li>安装完以后用 UltraISO软碟通 打开我们下载的映像文件.</li>
+<li>打开后左键单击 启动，左键单击选择 写入硬盘映像... .</li>
+<li>在驱动器中选择我们的空U盘.U盘内所有数据将被抹去.</li>
+<li>左键单击 写入，等待 写入完后左键单击选择 返回.关闭软件</li>
+这时我们看到的U盘已经是如图这样了.
+<img src="../../post-images/1585789700926.png"/>
+</ol>
+
+<h3 id="三-安装-Ubuntu-19-10"><a href="#三-安装-Ubuntu-19-10" class="headerlink" title="三.安装 Ubuntu 19.10"></a>三.安装 Ubuntu 19.10</h3><ol>
+<li>不要拔出U盘，重启电脑.</li>
+<li>在计算机的启动界面(注：是计算机启动界面，不是Windows启动界面)同时按下Fn+F12(部分电脑是只按F12)，进入启动盘选择.</li>
+<li>按上下键选择一个开头为USB的选项，按Enter键进入.</li>
+<li>之后就开始准备安装了.在左边语言栏找到 简体中文，发现右边栏有两个选项，选择直接安装.</li>
+<li>之后按照自己的需要选择选项，在 硬盘 一栏中选择第一个选项：安装 Ubuntu 与 Windows 10 共存.</li>
+<li>等待安装结束，重启电脑，在引导界面选择 Ubuntu 就可以进入 Ubuntu系统了.</li>
+原谅我没有截图，讲的应该够清晰了😝
+</ol>
+
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>没有参考，除了”进入启动选择的方法”是百度的之外，完全是自己摸索的.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://ation-xu.github.io/2020/04/02/Hello-World-%E5%9C%A8GitHub%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="徐梓添">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ation's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/02/Hello-World-%E5%9C%A8GitHub%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" class="post-title-link" itemprop="url">Hello,World!(在GitHub上搭建博客)</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-04-02 08:54:21" itemprop="dateCreated datePublished" datetime="2020-04-02T08:54:21+08:00">2020-04-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-17 01:30:44" itemprop="dateModified" datetime="2021-07-17T01:30:44+08:00">2021-07-17</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>2020年3月31日，<br>我按照 <a target="_blank" rel="noopener" href="https://wearbbs.cn/index.php?threads/63/#post-243"><font color="blue">https://wearbbs.cn/index.php?threads/63/#post-243</font></a> 的教程，在Github上申请了一个账号ation-xu,网址为：<a href="https://ation-xu.github.io"><font color="blue">https://ation-xu.github.io</font></a>.<br>搭建博客的步骤在我参考的教程内有详细说明，在此不再重复.</p>
+<p>参考 <a target="_blank" rel="noopener" href="https://wearbbs.cn/index.php?threads/63/#post-243"><font color="blue">https://wearbbs.cn/index.php?threads/63/#post-243</font></a>.</p>
+<p>按照教程十分顺利，但是在最后一步——在Gridea中检测远程连接时出现问题.<br>网络上有很多处理方式，但亲测后发现大多无用.最后发现是Gridea软件不是最新版本.官网下载慢，我百度了一下，下载安装后解决了问题。</p>
+<p>注：第一篇博客，我按照学习计算机语言的惯例(输出Hello,World)将其命名。这篇博客很短小，只是当作纪念。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">徐梓添</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">徐梓添</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
