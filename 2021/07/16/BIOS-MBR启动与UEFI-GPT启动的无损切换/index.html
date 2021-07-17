@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <script src="/live2d-widget/autoload.js"></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"ation-xu.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="继上次的 安装第二个物理机(以Ubuntu 19.10为例)，终于又出干货了.Microsoft 最近发布了 Windows 11，个人感觉比 Windows 10 好看了一些.然而，更新 Windows 11 的条件相当苛刻.其中似乎就包含了 UEFI启动.笔者当时买电脑时被要求删除原装的 Windows 10 并安装 Windows 7，由于当时并不是我自己操作的，电脑的启动方式被莫名改成了">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BIOS-MBR启动与UEFI-GPT启动的无损切换">
+<meta property="og:url" content="http://ation-xu.github.io/2021/07/16/BIOS-MBR%E5%90%AF%E5%8A%A8%E4%B8%8EUEFI-GPT%E5%90%AF%E5%8A%A8%E7%9A%84%E6%97%A0%E6%8D%9F%E5%88%87%E6%8D%A2/index.html">
+<meta property="og:site_name" content="Ation&#39;s Blog">
+<meta property="og:description" content="继上次的 安装第二个物理机(以Ubuntu 19.10为例)，终于又出干货了.Microsoft 最近发布了 Windows 11，个人感觉比 Windows 10 好看了一些.然而，更新 Windows 11 的条件相当苛刻.其中似乎就包含了 UEFI启动.笔者当时买电脑时被要求删除原装的 Windows 10 并安装 Windows 7，由于当时并不是我自己操作的，电脑的启动方式被莫名改成了">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-07-16T05:00:42.000Z">
+<meta property="article:modified_time" content="2021-07-16T17:29:26.327Z">
+<meta property="article:author" content="徐梓添">
+<meta property="article:tag" content="Windows">
+<meta property="article:tag" content="Hardware">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://ation-xu.github.io/2021/07/16/BIOS-MBR%E5%90%AF%E5%8A%A8%E4%B8%8EUEFI-GPT%E5%90%AF%E5%8A%A8%E7%9A%84%E6%97%A0%E6%8D%9F%E5%88%87%E6%8D%A2/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>BIOS-MBR启动与UEFI-GPT启动的无损切换 | Ation's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta custom-logo">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Ation's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">我们都是阴沟里的虫子，但总得有人仰望星空。</p>
+      <a>
+        <img class="custom-logo-image" src="https://ation-xu.github.io/Ation.jpg" alt="Ation's Blog">
+      </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://ation-xu.github.io/2021/07/16/BIOS-MBR%E5%90%AF%E5%8A%A8%E4%B8%8EUEFI-GPT%E5%90%AF%E5%8A%A8%E7%9A%84%E6%97%A0%E6%8D%9F%E5%88%87%E6%8D%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="徐梓添">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ation's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          BIOS-MBR启动与UEFI-GPT启动的无损切换
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-07-16 13:00:42" itemprop="dateCreated datePublished" datetime="2021-07-16T13:00:42+08:00">2021-07-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-17 01:29:26" itemprop="dateModified" datetime="2021-07-17T01:29:26+08:00">2021-07-17</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><del>继上次的 <a href="https://ation-xu.github.io/post/an-zhuang-di-er-ge-wu-li-ji-yi-ubuntu-1910-wei-li/">安装第二个物理机(以Ubuntu 19.10为例)</a>，终于又出干货了.</del><br>Microsoft 最近发布了 Windows 11，个人感觉比 Windows 10 好看了一些.然而，更新 Windows 11 的条件相当苛刻.其中似乎就包含了 UEFI启动.笔者当时买电脑时被要求删除原装的 Windows 10 并安装 Windows 7，由于当时并不是我自己操作的，电脑的启动方式被莫名改成了 传统BIOS和MBR 的方式，现在想改回来.说在前面，事实上 UEFI-GPT启动 和 BIOS-MBR启动 使用起来并没有太大的区别，只是 听说 UEFI-GPT 更安全(?)且使用 UEFI-GPT启动 时电脑的开机速度会快一些.其实原来没必要更改，因为数据处理太麻烦.但是现在有了无需格式化硬盘的办法，想折腾的读者可以试试.<br><del>其实是因为我想超越人类！おれは人间をやめるぞ！ジョジョ―――ッ！！</del></p>
+<h2 id="材料-amp-配置"><a href="#材料-amp-配置" class="headerlink" title="材料&amp;配置"></a>材料&amp;配置</h2><ul>
+<li>Lenovo ideapad 310S<h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><h3 id="使用-Windows-自带的-mbr2gpt-exe"><a href="#使用-Windows-自带的-mbr2gpt-exe" class="headerlink" title="使用 Windows 自带的 mbr2gpt.exe."></a>使用 Windows 自带的 mbr2gpt.exe.</h3></li>
+</ul>
+<ol>
+<li>以 管理员身份 打开 cmd.exe.</li>
+<li>输入 <code>mbr2gpt /validate /allowfullos</code> 并回车，这一步是测试，如果结果是 successfully,再进入下一步.</li>
+<li>输入 <code>mbr2gpt /convert /allowfullos</code> 并回车，等待输出 successfully.现在已经设置成GPT分区模式了.<h3 id="进入-BIOS-并将启动改成-UEFI启动"><a href="#进入-BIOS-并将启动改成-UEFI启动" class="headerlink" title="进入 BIOS 并将启动改成 UEFI启动."></a>进入 BIOS 并将启动改成 UEFI启动.</h3></li>
+<li>找到 Boot 选项，将 Boot Mode 一栏中的 Legacy Support 改成 UEFI.</li>
+<li>找到 Exit 选项，将 OS Optimized Defaults 一栏中 选择 Enable.</li>
+<li>选择 Exit Saving Changes，退出并重启.<h3 id="完成"><a href="#完成" class="headerlink" title="完成."></a>完成.</h3>如果现在发现启动界面不再显示 Windows图标 而是显示 电脑品牌图标 (比如我的是 Lenovo) 说明已经成功了.说实话，原来的 Windows LOGO 早就看腻了, 现在这个 Lenovo 看起来相当舒服(内心PS: 最高に「ハイ！」ってやつだ ).<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2></li>
+</ol>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/VXLeaf/article/details/108875812">VXLeaf - 《记录依次BIOS+MBR无损转换UEFI+GPT》</a> (如果在 使用 Windows 自带的 mbr2gpt.exe 将硬盘改成 GPT分区模式 一步中显示 fail，可以参考本文.)</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Windows/" rel="tag"># Windows</a>
+              <a href="/tags/Hardware/" rel="tag"># Hardware</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/04/17/Golden-Wind%EF%BC%81%EF%BC%88%E5%85%B3%E4%BA%8E%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90api%E7%9A%84%E5%B0%9D%E8%AF%95%EF%BC%89/" rel="prev" title="Golden Wind！（关于网易云音乐api的尝试）">
+      <i class="fa fa-chevron-left"></i> Golden Wind！（关于网易云音乐api的尝试）
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/07/16/Hello-Hexo/" rel="next" title="Hello,Hexo!">
+      Hello,Hexo! <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9D%90%E6%96%99-amp-%E9%85%8D%E7%BD%AE"><span class="nav-number">1.</span> <span class="nav-text">材料&amp;配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C"><span class="nav-number">2.</span> <span class="nav-text">操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-Windows-%E8%87%AA%E5%B8%A6%E7%9A%84-mbr2gpt-exe"><span class="nav-number">2.1.</span> <span class="nav-text">使用 Windows 自带的 mbr2gpt.exe.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9B%E5%85%A5-BIOS-%E5%B9%B6%E5%B0%86%E5%90%AF%E5%8A%A8%E6%94%B9%E6%88%90-UEFI%E5%90%AF%E5%8A%A8"><span class="nav-number">2.2.</span> <span class="nav-text">进入 BIOS 并将启动改成 UEFI启动.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%8C%E6%88%90"><span class="nav-number">2.3.</span> <span class="nav-text">完成.</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">徐梓添</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">徐梓添</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
